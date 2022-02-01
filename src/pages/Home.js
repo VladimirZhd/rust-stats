@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Search from '../components/Search';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../store/reducers/userReducer';
+import { updateStats } from '../store/reducers/statsReducer';
 
 const Home = () => {
 	const [data, setData] = useState({
@@ -7,8 +10,7 @@ const Home = () => {
 		error: '',
 		loading: false,
 	});
-	const [summaries, setSummaries] = useState({});
-	const [stats, setStats] = useState({});
+	const dispatch = useDispatch();
 
 	const { steamId, error, loading } = data;
 
@@ -21,6 +23,10 @@ const Home = () => {
 		setData({ ...data, loading: true });
 		let id = '';
 		try {
+			if (!steamId) {
+				setData({ ...data, error: 'ID is required.', loading: false });
+				return;
+			}
 			// Convert vanity id to numeric id
 			if (steamId.length < 16) {
 				const resId = await fetch(
@@ -44,8 +50,7 @@ const Home = () => {
 				`http://localhost:8000/users/getSummaries?steam_id=${id}`
 			);
 			const sumData = await sumRes.json();
-			setSummaries(sumData);
-			console.log(sumData);
+			dispatch(updateUser(sumData));
 			setData({ ...data, loading: false, steamId: '' });
 
 			// Get player stats
@@ -53,8 +58,7 @@ const Home = () => {
 				`http://localhost:8000/stats?steam_id=${id}`
 			);
 			const statsData = await statsRes.json();
-			console.log(statsData);
-			setStats(statsData);
+			dispatch(updateStats(statsData));
 		} catch (error) {
 			setData({ ...data, error: error.message });
 		}

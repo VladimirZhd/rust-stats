@@ -27,7 +27,6 @@ async def get_game_stats(steam_id):
         data = res.json()["playerstats"]
         for el in data["stats"]:
             formatted_data[el["name"]] = el["value"]
-            print(el)
         return formatted_data
     else:
         return {"message": "There was an error, please check SteamId and try again"}

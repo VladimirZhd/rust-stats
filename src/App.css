@@ -27,3 +27,7 @@ nav a {
 nav h2 {
 	margin-left: 10px;
 }
+
+.error {
+	color: var(--color-2);
+}
