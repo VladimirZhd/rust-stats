@@ -2,12 +2,12 @@ import React from 'react';
 import Stats from '../components/Stats';
 import UserInfo from '../components/UserInfo';
 
-const StatsPage = ({ userInfo, stats }) => {
+const StatsPage = () => {
 	return (
 		<>
 			<div className='stats_page_container'>
-				<UserInfo userInfo={userInfo} />
-				<Stats stats={stats} />
+				<UserInfo />
+				<Stats />
 			</div>
 		</>
 	);

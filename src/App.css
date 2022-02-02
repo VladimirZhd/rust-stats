@@ -8,6 +8,10 @@
 	--color-3: #f6eae0;
 }
 
+body {
+	background: url('./background.png') no-repeat;
+}
+
 nav {
 	display: flex;
 	flex-direction: row;
@@ -30,4 +34,23 @@ nav h2 {
 
 .error {
 	color: var(--color-2);
+}
+
+.stats_page_container {
+	width: 80%;
+	margin-left: 10%;
+	height: calc(100vh - 50px);
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.info {
+	display: flex;
+	flex-direction: row;
+}
+
+.info img {
+	margin: 0.5rem 0 0 0.5rem;
+}
+
+.name {
 }
