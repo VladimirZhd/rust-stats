@@ -14,6 +14,11 @@ const UserInfo = () => {
 		6: 'Looking to play',
 	};
 	let user = useSelector((state) => state.user.data);
+	const time = useSelector((state) => state.time.data);
+	const stats = useSelector((state) => state.stats.data);
+
+	const hours = Math.floor(time.total_time / 60);
+	const minutes = time.total_time % 60;
 	return (
 		<>
 			<div className='info'>
@@ -38,7 +43,14 @@ const UserInfo = () => {
 						</p>
 					)}
 				</div>
+				<div className='time_played'>
+					<p>
+						Played: {hours} hours, {minutes} minutes
+					</p>
+				</div>
+				<div className='time'></div>
 			</div>
+			{stats.message && <p className='error'>{stats.message}</p>}
 		</>
 	);
 };

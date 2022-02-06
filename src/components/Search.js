@@ -8,6 +8,7 @@ const Search = ({ handleSubmit, handleChange, steamId, error, loading }) => {
 				name='steamId'
 				value={steamId}
 				onChange={handleChange}
+				placeholder='Enter SteamID'
 			/>
 			<button className='btn'>{loading ? 'Searching' : 'Search'}</button>
 		</form>

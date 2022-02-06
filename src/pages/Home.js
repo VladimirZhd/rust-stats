@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { updateUser } from '../store/reducers/userReducer';
 import { updateStats } from '../store/reducers/statsReducer';
 import { useNavigate } from 'react-router-dom';
+import { updateTime } from '../store/reducers/timeReducer';
 
 const Home = () => {
 	const [data, setData] = useState({
@@ -50,19 +51,20 @@ const Home = () => {
 				id = steamId;
 			}
 			// Get player summaries
-			const sumRes = await fetch(
-				`http://localhost:8000/users/getSummaries?steam_id=${id}`
-			);
+			const sumRes = await fetch(`http://localhost:8000/users/getSummaries?steam_id=${id}`);
 			const sumData = await sumRes.json();
 			dispatch(updateUser(sumData));
 			setData({ ...data, loading: false, steamId: '', error: '' });
 
 			// Get player stats
-			const statsRes = await fetch(
-				`http://localhost:8000/stats?steam_id=${id}`
-			);
+			const statsRes = await fetch(`http://localhost:8000/stats?steam_id=${id}`);
 			const statsData = await statsRes.json();
 			dispatch(updateStats(statsData));
+
+			// Get all time played
+			const numRes = await fetch(`http://localhost:8000/stats/time_played?steam_id=${id}`);
+			const numData = await numRes.json();
+			dispatch(updateTime(numData));
 			navigate(`/user/${id}`);
 		} catch (error) {
 			setData({ ...data, error: error.message });
