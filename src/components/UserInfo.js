@@ -22,8 +22,8 @@ const UserInfo = () => {
 	return (
 		<>
 			<div className='info'>
-				<img src={user.avatarfull} alt='avatar' />
 				<div className='name-container'>
+					<img src={user.avatarfull} alt='avatar' />
 					<p className='name'>{user.personaname}</p>
 					<p className={`user-status-${user.personastate}`}>
 						{userStatus[user.personastate]}
@@ -42,11 +42,11 @@ const UserInfo = () => {
 							<Moment fromNow>{new Date(user.timecreated * 1000)}</Moment>
 						</p>
 					)}
-				</div>
-				<div className='time_played'>
-					<p>
-						Played: {hours} hours, {minutes} minutes
-					</p>
+					<div className='time_played'>
+						<p>
+							Played: {hours} hours, {minutes} minutes
+						</p>
+					</div>
 				</div>
 			</div>
 			{stats.message && <p className='error'>{stats.message}</p>}

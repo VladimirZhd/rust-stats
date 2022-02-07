@@ -51,7 +51,6 @@ async def get_time_played(steam_id):
         rust = {}
         for el in data:
             if el["appid"] == 252490:
-                print(el)
                 rust = el
         total_time = 0
         for key in rust:
