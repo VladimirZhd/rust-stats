@@ -35,7 +35,7 @@ const UserInfo = () => {
 						</p>
 					)}
 					{user.realname && <p>Real name: {user.realname}</p>}
-					{user.loccountrycode && <p>{user.loccountrycode}</p>}
+					{user.loccountrycode && <p>Country: {user.loccountrycode}</p>}
 					{user.timecreated && (
 						<p>
 							Joined Steam:&nbsp;
@@ -48,7 +48,6 @@ const UserInfo = () => {
 						Played: {hours} hours, {minutes} minutes
 					</p>
 				</div>
-				<div className='time'></div>
 			</div>
 			{stats.message && <p className='error'>{stats.message}</p>}
 		</>

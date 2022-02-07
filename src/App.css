@@ -1,5 +1,7 @@
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 :root {
@@ -96,4 +98,33 @@ nav h2 {
 
 .user-status-1 {
 	color: green;
+}
+
+.info img {
+	width: 184px;
+	height: 184px;
+}
+
+.info p {
+	margin-bottom: 10px;
+	font-size: 1.1rem;
+}
+
+.name-container {
+	margin-top: 10px;
+	margin-left: -9rem;
+}
+
+.time_played {
+	margin: 10px 2rem 0 0;
+}
+
+.time_played p {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.stats-title {
+	text-align: center;
+	margin-top: 20px;
 }
