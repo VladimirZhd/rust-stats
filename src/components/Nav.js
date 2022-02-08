@@ -28,7 +28,7 @@ const Nav = () => {
 				<Link to='/'>Home</Link>
 			</h2>
 			<div className='login-wrapper'>
-				{user ? (
+				{auth.currentUser ? (
 					<>
 						<Link to='profile'>Profile</Link>
 						<button className='btn' onClick={handleSignOut}>

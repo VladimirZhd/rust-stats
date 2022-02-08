@@ -6,8 +6,24 @@ import StatsPage from './pages/StatsPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth, db } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { updateAccount } from './store/reducers/accReducer';
 
 function App() {
+	const acc = useSelector((state) => state.acc.data);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		if (acc) return;
+		setTimeout(() => {
+			if (!auth.currentUser) return;
+			getDoc(doc(db, 'users', auth.currentUser.uid)).then((res) => {
+				dispatch(updateAccount(res.data()));
+			});
+		}, 1000);
+	});
 	return (
 		<BrowserRouter>
 			<Nav />
