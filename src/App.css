@@ -142,3 +142,33 @@ nav h2 {
 .stats div {
 	margin-right: 20px;
 }
+
+.login-form,
+.register-form {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 30px;
+	padding: 0 20px;
+}
+
+.login-form input,
+.register-form input {
+	width: 100%;
+	padding: 10px;
+	outline: none;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.login-form h1,
+.register-form h1 {
+	text-align: center;
+}
+
+.login-form button,
+.register-form button {
+	margin-top: 10px;
+	align-self: center;
+}

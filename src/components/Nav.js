@@ -19,7 +19,7 @@ const Nav = () => {
 	});
 
 	const handleSignOut = async () => {
-		await signOut();
+		await signOut(auth);
 	};
 
 	return (
