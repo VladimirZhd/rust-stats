@@ -31,7 +31,7 @@ const Nav = () => {
 				{auth.currentUser ? (
 					<>
 						<Link to='profile'>Profile</Link>
-						<button className='btn' onClick={handleSignOut}>
+						<button className='logout' onClick={handleSignOut}>
 							Logout
 						</button>
 					</>
