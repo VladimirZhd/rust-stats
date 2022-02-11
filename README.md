@@ -1,36 +1,32 @@
 # Overview
 
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
+This is the a statistics website for the `Rust` game. To start the server on a local machine you need to instal `fastapi`, `uvicorn`, and `requests` libraries. Then go to the `python` folder and run `python3 -m uvicorn main:app` on mac, and `python -m uvicorn main:app`. To start the frontend you need to run `npm start` in the root folder. Open `http://localhost:3000` in the browser and run use the app.
 
-{Provide a description the web app that you wrote. Describe how to start a test server on your computer and what website to open up to see the first page of the app.}
+I wanted to build that software because I am playing that game and wanted to see the stats, the way I want to see them. Also, I play with friends and we can see who does a better job harvesting resources and building bases.
 
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running (starting the server and navigating through the web pages) and a walkthrough of the code.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/b5hhTd354Ms)
 
 # Web Pages
 
-{Describe each of the web pages you created and how the web app transitions between each of them. Also describe what is dynamically created on each page.}
+The application starts with landing page where a user can search for his/her stats using their steam id. After submitting the search request, it takes them to the stats page. Where all of the stats build dynamically. Also, the website has registration, login, and profile page. The first two just a regular form pages. The profile page will have links to logged in user stats and to all steam account that user saves to the favorites.
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+I've used `SteamAPI` to get the data, because I could't use it directly from frontend (CORS). I've set up a proxy server using `Python` framework `FastAPI`. Because `FastAPI` has built in swagger docs, I was able to use my browser and running server to test the backend. I make calls to the API and format the data to it's final state and send it to the frontend. On the frontend I've used `React` and `Firebase`. All of the coding was done in `Visual Studio Code`.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-
--   [Web Site Name](http://url.link.goes.here)
--   [Web Site Name](http://url.link.goes.here)
+-   [FastAPI](https://fastapi.tiangolo.com/)
+-   [SteamAPI](https://steamcommunity.com/dev)
+-   [Game Icons](https://game-icons.net/)
+-   [HeroIcons](https://heroicons.com/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
+There is still a lot work to do for me to get satisfied by this software.
 
--   Item 1
--   Item 2
--   Item 3
+-   Fix all bugs related to hard page reload.
+-   Finish profile page, to display favorites.
+-   Add styles for mobile view
+-   Add an external link to player's steam account
+-   Clean up the code, dividing stats component into three different components.

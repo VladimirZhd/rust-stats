@@ -40,6 +40,7 @@ const Register = () => {
 				uid: result.user.uid,
 				email: email,
 				steamId: steamId,
+				favorites: [],
 				name: sumData.personaname,
 			});
 			setData({
