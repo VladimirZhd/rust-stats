@@ -1,15 +1,11 @@
 import React from 'react';
 
-const Heart = ({ id }) => {
+const Heart = ({ id, style }) => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
 			className='h-5 w-5'
-			style={{
-				width: '25px',
-				height: '25px',
-				cursor: 'pointer',
-			}}
+			style={style}
 			id={id}
 			viewBox='0 0 20 20'
 			fill='currentColor'>

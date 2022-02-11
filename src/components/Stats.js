@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Backstab from './svg/Backstab';
 import Deaths from './svg/Deaths';
@@ -17,6 +17,10 @@ import Ore from './svg/Ore';
 import Wood from './svg/Wood';
 import Scrap from './svg/Scrap';
 import Headshot from './svg/Headshot';
+import Other from './svg/Other';
+import Wounded from './svg/Wounded';
+import Healed from './svg/Healed';
+import Assists from './svg/Assists';
 
 const Stats = () => {
 	const stats = useSelector((state) => state.stats.data);
@@ -132,7 +136,7 @@ const Stats = () => {
 							</p>
 							<p>
 								<Ore
-									style={{ width: '15px', height: '15px' }}
+									style={{ width: '25px', height: '25px' }}
 								/>{' '}
 								Metal ore:{' '}
 								{stats['acquired_metal.ore'].toLocaleString(
@@ -150,6 +154,7 @@ const Stats = () => {
 						</div>
 						<div className='other'>
 							<div className='stat-title'>
+								<Other />
 								<h3>Other stats</h3>
 								<p>
 									<Headshot /> Headshots:{' '}
@@ -158,6 +163,16 @@ const Stats = () => {
 											100
 									)}
 									%
+								</p>
+								<p>
+									<Wounded /> Wounded: {stats.wounded}
+								</p>
+								<p>
+									<Assists /> Assists:{' '}
+									{stats.wounded_assisted}
+								</p>
+								<p>
+									<Healed /> Revived: {stats.wounded_healed}
 								</p>
 							</div>
 						</div>

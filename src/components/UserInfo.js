@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -28,10 +28,23 @@ const UserInfo = () => {
 	const acc = useSelector((state) => state.acc.data);
 	const { id } = useParams();
 	const dispatch = useDispatch();
+	const [style, setStyle] = useState({
+		width: '25px',
+		height: '25px',
+		cursor: 'pointer',
+		color: 'grey',
+	});
 
 	useEffect(() => {
 		if (!user || user.steamid !== id) {
 			getUser();
+		}
+		if (acc) {
+			acc.favorites.forEach((el) => {
+				if (el === id) {
+					setStyle({ ...style, color: 'red' });
+				}
+			});
 		}
 	}, []);
 
@@ -66,6 +79,24 @@ const UserInfo = () => {
 
 	const addToFavorites = async (e) => {
 		const favId = e.target.parentNode.id;
+		let index = 0;
+		let newFav = [];
+		if (acc) {
+			index = acc.favorites.findIndex((x) => x === id);
+			newFav = acc.favorites;
+		}
+		if (index !== -1) {
+			newFav.splice(index, 1);
+			await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+				favorites: newFav,
+			});
+			getDoc(doc(db, 'users', auth.currentUser.uid)).then((user) => {
+				dispatch(updateAccount(user.data()));
+			});
+			setStyle({ ...style, color: 'grey' });
+			return;
+		}
+		setStyle({ ...style, color: 'red' });
 		let favorites = [];
 		const self = await (
 			await getDoc(doc(db, 'users', auth.currentUser.uid))
@@ -97,7 +128,7 @@ const UserInfo = () => {
 								onClick={addToFavorites}
 								id={id}
 								htmlFor='heart'>
-								<Heart id={id} />
+								<Heart id={id} style={style} />
 							</label>
 						)}
 					</p>
